@@ -1,20 +1,18 @@
 import './scss/main.scss'
 import './components/header/header.scss'
+import headerHtml from './components/header/header.html?raw'
 
-// Функция для загрузки и трансформации контейнера в компонент
-async function loadComponent(url, targetId) {
+function insertHeader(targetId) {
   try {
-    const response = await fetch(url);
-    const html = await response.text();
-    
     // Получаем контейнер
     const container = document.getElementById(targetId);
+    if (!container) return;
     
     // Создаем временный элемент для парсинга HTML
     const temp = document.createElement('div');
-    temp.innerHTML = html;
+    temp.innerHTML = headerHtml;
     
-    // Получаем header элемент из загруженного HTML
+    // Получаем header элемент
     const headerElement = temp.firstElementChild;
     
     // Копируем все атрибуты из header в контейнер
@@ -38,9 +36,11 @@ async function loadComponent(url, targetId) {
     container.parentNode.replaceChild(newHeader, container);
     
   } catch (error) {
-    console.error('Ошибка загрузки компонента:', error);
+    console.error('Ошибка вставки компонента:', error);
   }
 }
 
-// Загружаем шапку
-loadComponent('/src/components/header/header.html', 'header-container');
+// Вставляем шапку
+document.addEventListener('DOMContentLoaded', () => {
+  insertHeader('header-container');
+});
