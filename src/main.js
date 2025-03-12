@@ -1,12 +1,17 @@
-import './scss/main.scss'
-import './components/header/header.scss'
-import headerHtml from './components/header/header.html?raw'
+import './scss/main.scss';
+import './components/header/header.scss';
+// Импорт с использованием ?url для получения URL файла
+import headerHtmlUrl from './components/header/header.html?url';
 
-function insertHeader(targetId) {
+async function insertHeader(targetId) {
   try {
     // Получаем контейнер
     const container = document.getElementById(targetId);
     if (!container) return;
+    
+    // Загружаем HTML по URL
+    const response = await fetch(headerHtmlUrl);
+    const headerHtml = await response.text();
     
     // Создаем временный элемент для парсинга HTML
     const temp = document.createElement('div');
@@ -34,7 +39,6 @@ function insertHeader(targetId) {
     
     // Заменяем div на header
     container.parentNode.replaceChild(newHeader, container);
-    
   } catch (error) {
     console.error('Ошибка вставки компонента:', error);
   }

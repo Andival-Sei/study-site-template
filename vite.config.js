@@ -1,18 +1,19 @@
 import { defineConfig } from 'vite';
-import rawPlugin from 'vite-plugin-raw';
+import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [
-    rawPlugin({
-      include: ['**/*.html']
-    })
-  ],
   build: {
     rollupOptions: {
       input: {
-        main: 'index.html',
-        introduction: 'src/pages/introduction.html',
+        main: resolve(__dirname, 'index.html'),
+        introduction: resolve(__dirname, 'src/pages/introduction.html'),
       }
+    }
+  },
+  assetsInclude: ['**/*.html'],
+  optimizeDeps: {
+    esbuildOptions: {
+      logOverride: { 'commonjs-variables': 'silent' }
     }
   }
 });
