@@ -1,0 +1,76 @@
+/* Обнуляющие стили */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Документ */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-block-size: 100vh;
+  line-height: 1.5;
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Удаление стилей списков */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Элементы форм */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаление курсива у address */
+address {
+  font-style: normal;
+}
+
+/* Удаление стилей ссылок */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Упрощение работы с изображениями */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  block-size: auto;
+}
+
+/* Удаление подсветки кликабельных элементов в iOS */
+button,
+input,
+[tabindex] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитают их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

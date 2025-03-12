@@ -1,0 +1,41 @@
+@use 'variables' as *;
+
+body {
+  font-family: $font-main;
+  color: $text-color;
+  background-color: #303034;
+}
+
+.container {
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0 $gutter;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  margin-block-end: 0.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+// Глобальные стили для ссылок, кнопок и т.д.
